@@ -1,0 +1,23 @@
+--display
+local function pro()
+    TextBox.FocusLost:connect(function()
+        for i,v in pairs(game.Players:GetChildren()) do
+            if (string.sub(string.lower(v.DisplayName),1,string.len(TextBox.Text))) == string.lower(TextBox.Text) then
+                TextBox.Text = v.Name
+            end
+        end
+    end)
+end
+
+pro()
+function xd(name)
+    name = name:lower()
+    if name == 'me' then
+        return game:GetService'Players'.LocalPlayer
+    end
+    for i,v in pairs(game:GetService'Players':GetPlayers()) do
+        if v.DisplayName:lower():find(name) == 1 then
+            return v
+        end
+    end
+end
